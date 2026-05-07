@@ -31,7 +31,7 @@ async def help_inline(_, query: InlineQuery):
                         caption,
                         disable_web_page_preview=True,
                     ),
-                    description="Inline Query for Help Menu of PbxBot",
+                    description="Inline Query for Help Menu of Oᴡɴ Usᴇʀʙᴏᴛ",
                     reply_markup=InlineKeyboardMarkup(buttons),
                 )
             )
