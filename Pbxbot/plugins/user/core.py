@@ -73,8 +73,8 @@ async def inline_repo(client: Client, inline_query):
             InlineKeyboardButton("ʀᴇᴘᴏ", url="t.me/kaisenbots")
         ],
         [
-            InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url="https://t.me/PBX_UPDATE"),
-            InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/PBX_CHAT")
+            InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url="https://t.me/kaisenbots"),
+            InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/GHOULS_SUPPORT")
         ]
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
@@ -86,7 +86,7 @@ async def inline_repo(client: Client, inline_query):
             thumb_url="https://i.ibb.co/ZRf6fHrw/x.jpg",  # Thumbnail
             title="Repository Information",
             description="Click to view the repository details",
-            caption="📌 **Repo:**\n🔗 [Click Here](https://gitlab.com/Badhacker98/PBX_2.0/-/forks/new)",
+            caption="📌 **Repo:**\n🔗 [Click Here](https://gitlab.com)",
             reply_markup=reply_markup
         )
     ]
@@ -337,7 +337,7 @@ HelpMenu("help").add(
     "installall",
     "<channel username>",
     "Install all the plugins from the mentioned channel.",
-    "installall @PBX_CHAT",
+    "installall @GHOULS_SUPPORT",
     "Do not install plugins from untrusted sources, they can be a malware. We're not responsible for any damage caused by them.",
 ).add(
     "unload",
