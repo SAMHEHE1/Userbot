@@ -1,71 +1,88 @@
 {
-    "name": "🕊️⃝‌ᴘʙx ❤️ᥫ᭡፝֟፝֟ 2.0 ",
-    "description": "One of the best Userbot for Telegram. Known for its Smoothness, Design, Support.",
-    "logo": "https://telegra.ph/file/6ce1de27d207a128b408d.jpg",
-    "keywords": [
-        "telegram",
-        "userbot",
-        "plugin",
-        "pyrogram",
-        "Pbxbot"
-    ],
-    "repository": "https://gitlab.com/Badhacker98/PBX_2.0",
-    "env": {
-        "API_HASH": {
-            "description": "Get this value from my.telegram.org",
-            "value": ""
-        },
-        "API_ID": {
-            "description": "Get this value from my.telegram.org",
-            "value": ""
-        },
-        "BOT_TOKEN": {
-            "description": "Make a bot from @BotFather and paste the bot token here.",
-            "value": ""
-        },
-        "DATABASE_URL": {
-            "description": "Only use mongodb url here. Get it from https://mongodb.com/",
-            "value": "mongodb+srv://Pbxbot:BADMYDAD@badhacker.i5nw9na.mongodb.net/"
-        },
-        "HANDLERS": {
-            "description": "Lis of handlers seperated with a space to use for userbot command trigger.",
-            "value": ". ! , ?",
-            "required": false
-        },
-        "LOGGER_ID": {
-            "description": "The chat id of your logging channel/group.",
-            "value": ""
-        },
-        "OWNER_ID": {
-            "description": "Your user id.",
-            "value": ""
-        },
-        "HEROKU_APPNAME": {
-            "description": "Your heroku app name. Get it from the top of this page.",
-            "value": ""
-        },
-        "HEROKU_APIKEY": {
-            "description": "Heroku api key. Get it from https://dashboard.heroku.com/account",
-            "value": ""
-        },
-        "PLUGINS_REPO": {
-            "description": "Fillup the username/reponame of the plugins repo.",
-            "value": "SAMHEHE1/Userbot",
-            "required": true
-        }
+  "name": "🕊️⃝‌ᴘʙx ❤️ᥫ᭡፝֟፝֟ 2.0",
+  "description": "One of the best Userbot for Telegram. Known for its Smoothness, Design, Support.",
+  "logo": "https://telegra.ph/file/6ce1de27d207a128b408d.jpg",
+  "keywords": [
+    "telegram",
+    "userbot",
+    "plugin",
+    "pyrogram",
+    "Pbxbot"
+  ],
+  "repository": "https://gitlab.com/Badhacker98/PBX_2.0",
+
+  "env": {
+    "API_HASH": {
+      "description": "Get this value from my.telegram.org",
+      "value": ""
     },
-    "buildpacks": [
-        {
-            "url": "https://gitlab.com/Badmunda98/heroku-buildpack-ffmpeg-latest"
-        },
-        {
-            "url": "https://github.com/heroku/heroku-buildpack-chrome-for-testing"
-        },
-        {
-            "url": "https://github.com/heroku/heroku-buildpack-apt.git"
-        },
-        {
-            "url": "heroku/python"
-        }
-    ]
+
+    "API_ID": {
+      "description": "Get this value from my.telegram.org",
+      "value": ""
+    },
+
+    "BOT_TOKEN": {
+      "description": "Make a bot from @BotFather and paste the bot token here.",
+      "value": ""
+    },
+
+    "DATABASE_URL": {
+      "description": "Only use mongodb url here. Get it from https://mongodb.com/",
+      "value": "mongodb+srv://Pbxbot:BADMYDAD@badhacker.i5nw9na.mongodb.net/"
+    },
+
+    "GIT_PYTHON_REFRESH": {
+      "description": "Suppress GitPython warnings",
+      "value": "quiet",
+      "required": false
+    },
+
+    "HANDLERS": {
+      "description": "List of handlers separated with space for commands.",
+      "value": ". ! , ?",
+      "required": false
+    },
+
+    "LOGGER_ID": {
+      "description": "The chat id of your logging channel/group.",
+      "value": ""
+    },
+
+    "OWNER_ID": {
+      "description": "Your Telegram user id.",
+      "value": ""
+    },
+
+    "HEROKU_APPNAME": {
+      "description": "Your Heroku app name.",
+      "value": ""
+    },
+
+    "HEROKU_APIKEY": {
+      "description": "Heroku API key from https://dashboard.heroku.com/account",
+      "value": ""
+    },
+
+    "PLUGINS_REPO": {
+      "description": "Fill the username/reponame of plugins repo.",
+      "value": "SAMHEHE1/Userbot",
+      "required": true
+    }
+  },
+
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-apt.git"
+    },
+    {
+      "url": "https://gitlab.com/Badmunda98/heroku-buildpack-ffmpeg-latest"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-chrome-for-testing"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ]
 }
