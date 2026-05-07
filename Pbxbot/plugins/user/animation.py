@@ -118,9 +118,9 @@ async def hearts(client: Client, message: Message):
     await asyncio.sleep(0.5)
     await message.edit("💝 ᴍʏ ᴄᴜᴛᴇ")
     await asyncio.sleep(0.5)
-    await message.edit("💞 ᴍʏ ᴄᴜᴛᴇ ᴏᴡɴᴇʀ")
+    await message.edit("ᴏᴡɴᴇʀ")
     await asyncio.sleep(3)
-    await message.edit("[⎯꯭̽🇨🇦꯭꯭ ⃪В꯭α꯭∂ ꯭м꯭υ꯭η∂꯭α_꯭آآ⎯꯭ ꯭̽🌸](https://t.me/ll_BAD_MUNDA_ll)")
+    await message.edit("[ᴋ ᴀ ɪ ꜱ ᴇ ɴ](https://t.me/QUOTLL)")
 
 @on_message("rain", allow_stan=True)
 async def hearts(client: Client, message: Message):
