@@ -19,7 +19,7 @@ class PbxClient(Client):
     def __init__(self) -> None:
         self.users: list[Client] = []
         self.bot: Client = Client(
-            name="PBXBOT 2.0",
+            name="Oᴡɴ Usᴇʀʙᴏᴛ",
             api_id=Config.API_ID,
             api_hash=Config.API_HASH,
             bot_token=Config.BOT_TOKEN,
@@ -111,7 +111,7 @@ class PbxClient(Client):
         await self.bot.send_animation(
                         Config.LOGGER_ID,
             "https://telegra.ph/file/48a4bb97b1b6e64184223.mp4",
-            f"**{Symbols.check_mark} ᴘʙx 2.0 ɪs.ɴᴏᴡ ᴏɴʟɪɴᴇ!**\n\n"
+            f"**{Symbols.check_mark} Oᴡɴ Usᴇʀʙᴏᴛ ɪs.ɴᴏᴡ ᴏɴʟɪɴᴇ!**\n\n"
             f"**{Symbols.triangle_right}  ᴄʟɪᴇɴᴛs ➠ ** `{len(self.users)}`\n"
             f"**{Symbols.triangle_right} ᴘʟᴜɢɪɴs ➠ ** `{len(Config.CMD_MENU)}`\n"
             f"**{Symbols.triangle_right} ᴄᴏᴍᴍᴀɴᴅs ➠ ** `{len(Config.CMD_INFO)}`\n"
