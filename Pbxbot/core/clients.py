@@ -126,14 +126,14 @@ class PbxClient(Client):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("💫 sᴛᴀʀᴛ ᴍᴇ", url=f"https://t.me/{self.bot.me.username}?start=start"),
-                        InlineKeyboardButton("💖 ʀᴇᴘᴏ", url="https://gitlab.com/Badhacker98/PBX_2.0/-/forks/new"),
+                        InlineKeyboardButton(" sᴛᴀʀᴛ ᴍᴇ", url=f"https://t.me/{self.bot.me.username}?start=start"),
+                        InlineKeyboardButton(" ʀᴇᴘᴏ", url="https://gitlab.com/Badhacker98"),
                     ],
                     [
-                        InlineKeyboardButton("⎯꯭̽🇨🇦꯭꯭ ⃪В꯭α꯭∂ ꯭м꯭υ꯭η∂꯭α_꯭آآ⎯꯭ ꯭̽🌸", url="https://t.me/ll_BAD_MUNDA_ll"),
+                        InlineKeyboardButton("ᴋ ᴀ ɪ ꜱ ᴇ ɴ", url="https://t.me/quotll"),
                     ],
                     [
-                    InlineKeyboardButton("🦋 𝐏ʙx 𝐁ᴏᴛ 𝐒ᴜᴘᴘᴏʀᴛ ❤️", url="https://t.me/PBX_UPDATE"),
+                    InlineKeyboardButton("˹ sυᴘᴘσʀᴛ ˼", url="https://t.me/GHOULS_SUPPORT"),
                     ],
                 ]
             ),
@@ -141,7 +141,7 @@ class PbxClient(Client):
 
     async def startup(self) -> None:
         LOGS.info(
-            f"{Symbols.bullet * 3} Starting PBX 2.0 Client & User {Symbols.bullet * 3}"
+            f"{Symbols.bullet * 3} Starting  Client & User {Symbols.bullet * 3}"
         )
         await self.start_bot()
         await self.start_user()
