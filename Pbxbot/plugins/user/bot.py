@@ -25,11 +25,11 @@ from pyrogram.types import (
 
 @on_message("alive", allow_stan=True)
 async def alive(client: Client, message: Message):
-    Pbx = await Pbxbot.edit(message, "ʀᴜᴋᴏ ʙᴀʙʏ ☹️✨❤️")
+    Pbx = await Pbxbot.edit(message, "wait....✨")
 
     img = await db.get_env(ENV.alive_pic)
     if not img:
-        img = "./Pbxbot/resources/images/Pbxbot_logo.png"  # Default image
+        img = "https://i.ibb.co/ZRf6fHrw/x.jpg"  # Default image
 
     uptime = readable_time(time.time() - START_TIME)
     caption = await alive_template(message.from_user.first_name, uptime)
@@ -51,7 +51,7 @@ async def alive(client: Client, message: Message):
 async def inline_alive(client: Client, inline_query):
     img = await db.get_env(ENV.alive_pic)
     if not img:
-        img = "./Pbxbot/resources/images/Pbxbot_logo.png"  # Default image
+        img = "https://i.ibb.co/ZRf6fHrw/x.jpg"  # Default image
 
     uptime = readable_time(time.time() - START_TIME)
     caption = await alive_template(inline_query.from_user.first_name, uptime)
@@ -78,7 +78,7 @@ async def inline_alive(client: Client, inline_query):
 @on_message("ping", allow_stan=True)
 async def ping(client: Client, message: Message):
     start_time = time.time()
-    Pbx = await Pbxbot.edit(message, "`·.·★ ᴘʙx 2.0 ★·.·´")
+    Pbx = await Pbxbot.edit(message, "`Oᴡɴ Usᴇʀʙᴏᴛ´")
     
     uptime = readable_time(time.time() - START_TIME)
     end_time = time.time()
@@ -103,7 +103,7 @@ async def ping(client: Client, message: Message):
 async def inline_ping(client: Client, inline_query):
     img = await db.get_env(ENV.ping_pic)
     if not img:
-        img = "https://telegra.ph/file/14166208a7bf871cb0aca.jpg"  # Default image
+        img = "https://i.ibb.co/ZRf6fHrw/x.jpg"  # Default image
 
     uptime = readable_time(time.time() - START_TIME)
     
