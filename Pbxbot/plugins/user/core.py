@@ -82,8 +82,8 @@ async def inline_repo(client: Client, inline_query):
     results = [
         InlineQueryResultPhoto(
             id="repo",
-            photo_url="https://files.catbox.moe/y3evsv.jpg",  # Image URL
-            thumb_url="https://files.catbox.moe/y3evsv.jpg",  # Thumbnail
+            photo_url="https://i.ibb.co/ZRf6fHrw/x.jpg",  # Image URL
+            thumb_url="https://i.ibb.co/ZRf6fHrw/x.jpg",  # Thumbnail
             title="Repository Information",
             description="Click to view the repository details",
             caption="📌 **Repo:**\n🔗 [Click Here](https://gitlab.com/Badhacker98/PBX_2.0/-/forks/new)",
