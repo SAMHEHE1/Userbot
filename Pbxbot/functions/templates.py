@@ -5,7 +5,7 @@ from Pbxbot.core import ENV, db
 
 ALIVE_TEMPLATES = [
     (
-"╰★  Oᴡɴ Usᴇʀʙᴏᴛ ★\n"
+"★  Oᴡɴ Usᴇʀʙᴏᴛ ★\n"
 "❍═══════════════════════❍\n\n"
 "│➠ 𝐎ᴡɴᴇʀ » {owner}\n"
 "│➠ 𝐏ʏʀᴏɢʀᴀᴍ » {pyrogram}\n"
