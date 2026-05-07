@@ -26,7 +26,7 @@ async def help_inline(_, query: InlineQuery):
         results=[
             (
                 InlineQueryResultArticle(
-                    "Pbxbot 2.0 Help Menu 👻",
+                    "Oᴡɴ Usᴇʀʙᴏᴛ Help Menu 👻",
                     InputTextMessageContent(
                         caption,
                         disable_web_page_preview=True,
