@@ -58,8 +58,8 @@ async def inline_alive(client: Client, inline_query):
 
     buttons = [
         [
-            InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/PBX_CHAT"),
-            InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url="https://t.me/PBX_UPDATE"),
+            InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/GHOULS_SUPPORT"),
+            InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url="https://t.me/kaisenbots"),
         ],
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
@@ -115,8 +115,8 @@ async def inline_ping(client: Client, inline_query):
 
     buttons = [
         [
-            InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/PBX_CHAT"),
-            InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url="https://t.me/PBX_UPDATE"),
+            InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/GHOULS_SUPPORT"),
+            InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url="https://t.me/kaisenbots"),
         ],
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
@@ -184,7 +184,7 @@ HelpMenu("bot").add(
     "history",
     "<reply to user>/<username/id>",
     "Get the username, name history of an user.",
-    "history @II_BAD_MUNDA_II",
+    "history @quotll",
     "This command uses SangMata Bot to get the history.",
 ).info(
     "Alive Menu"
