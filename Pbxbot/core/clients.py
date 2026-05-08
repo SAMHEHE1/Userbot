@@ -48,11 +48,11 @@ class PbxClient(Client):
                         f"Client #{i+1}: '{me.first_name}' is not in Logger Group! Check and add manually for proper functioning."
                     )
                 try:
-                    await client.join_chat("https://t.me/PBX_CHAT")
+                    await client.join_chat("https://t.me/ghouls_support")
                 except:
                     pass
                 try:
-                    await client.join_chat("https://t.me/PBX_UPDATE")
+                    await client.join_chat("https://t.me/kaisenbots")
                 except:
                     pass
             except Exception as e:
@@ -120,7 +120,7 @@ class PbxClient(Client):
             f"**{Symbols.triangle_right} ᴘʙx 2.0 ᴠᴇʀsɪᴏɴ ➠ ** `{version['Pbxbot']}`\n"
             f"**{Symbols.triangle_right}  ᴘʏʀᴏɢʀᴀᴍ ᴠᴇʀsɪᴏɴ ➠ ** `{version['pyrogram']}`\n"
             f"**{Symbols.triangle_right}  ᴘʏᴛʜᴏɴ ᴠᴇʀsɪᴏɴ ➠ ** `{version['python']}`\n\n"
-            f"**</> @PBX_CHAT**",
+            f"**</> ❍ 𝐏ᴏᴡєʀєᴅ 𝖡ʏ » [ᴋᴀɪsᴇɴ-ʙσᴛs](https://t.me/KAISENbots)**",
             parse_mode=ParseMode.MARKDOWN,
             disable_notification=True,
             reply_markup=InlineKeyboardMarkup(
