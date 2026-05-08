@@ -110,7 +110,7 @@ class PbxClient(Client):
     async def start_message(self, version: dict) -> None:
         await self.bot.send_message(
                         Config.LOGGER_ID,
-            f"**{Symbols.check_mark} Oᴡɴ Usᴇʀʙᴏᴛ ɪs.ɴᴏᴡ ᴏɴʟɪɴᴇ!**\n\n"
+            f"**{Symbols.check_mark} Oᴡɴ Usᴇʀʙᴏᴛ ɪs ɴᴏᴡ ᴏɴʟɪɴᴇ!**\n\n"
             f"**{Symbols.triangle_right}  ᴄʟɪᴇɴᴛs ➠ ** `{len(self.users)}`\n"
             f"**{Symbols.triangle_right} ᴘʟᴜɢɪɴs ➠ ** `{len(Config.CMD_MENU)}`\n"
             f"**{Symbols.triangle_right} ᴄᴏᴍᴍᴀɴᴅs ➠ ** `{len(Config.CMD_INFO)}`\n"
@@ -119,7 +119,7 @@ class PbxClient(Client):
             f"**{Symbols.triangle_right} ᴘʙx 2.0 ᴠᴇʀsɪᴏɴ ➠ ** `{version['Pbxbot']}`\n"
             f"**{Symbols.triangle_right}  ᴘʏʀᴏɢʀᴀᴍ ᴠᴇʀsɪᴏɴ ➠ ** `{version['pyrogram']}`\n"
             f"**{Symbols.triangle_right}  ᴘʏᴛʜᴏɴ ᴠᴇʀsɪᴏɴ ➠ ** `{version['python']}`\n\n"
-            f"**❍ 𝐏ᴏᴡєʀєᴅ 𝖡ʏ » [ᴋᴀɪsᴇɴ-ʙσᴛs](https://t.me/KAISENbots)**",
+            f"**❍ 𝐏ᴏᴡєʀєᴅ 𝖡ʏ » @KaisenBots**",
             parse_mode=ParseMode.MARKDOWN,
             disable_notification=True,
             reply_markup=InlineKeyboardMarkup(
