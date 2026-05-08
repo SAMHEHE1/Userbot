@@ -3,14 +3,6 @@ from Pbxbot.core.config import Config, Symbols
 from Pbxbot.core.database import db
 from Pbxbot.plugins.help import BotHelp
 
-from pyrogram.types import InputMediaPhoto
-
-
-# ================= IMAGE =================
-
-START_PIC = "https://i.ibb.co/ZRf6fHrw/x.jpg"
-
-
 # ================= START MESSAGE =================
 
 START_MSG = """
