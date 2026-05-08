@@ -48,7 +48,7 @@ class PbxClient(Client):
                         f"Client #{i+1}: '{me.first_name}' is not in Logger Group! Check and add manually for proper functioning."
                     )
                 try:
-                    await client.join_chat("https://t.me/ghouls_support")
+                    await client.join_chat("https://t.me/gencodes")
                 except:
                     pass
                 try:
