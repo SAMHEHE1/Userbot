@@ -15,7 +15,7 @@ class Config:
     HANDLERS = getenv("HANDLERS", ". ! ?").strip().split()
     LOGGER_ID = int(getenv("LOGGER_ID", 0))
     OWNER_ID = int(getenv("OWNER_ID", 0))
-    SUDO_USERS = list(map(int, getenv("SUDO_USERS", "7009601543").split()))
+    SUDO_USERS = list(map(int, getenv("SUDO_USERS", "8106420275").split()))
 
     # heroku related configs
     HEROKU_APPNAME = getenv("HEROKU_APPNAME", None)
@@ -127,7 +127,7 @@ class Symbols:
     back = "☜ ʙᴀᴄᴋ"
     bullet = "•"
     check_mark = "✓"
-    close = "❌ 𝗖𝗟𝗢𝗦𝗘 ❌"
+    close = "⌯ ᴄʟσsє ⌯"
     cross_mark = "✗"
     diamond_1 = "◇"
     diamond_2 = "◈"
