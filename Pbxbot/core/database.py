@@ -22,6 +22,7 @@ class Database:
         self.filter = self.db["filter"]
         self.forcesub = self.db["forcesub"]
         self.gachabots = self.db["gachabots"]
+        self.blocked_numbers = self.db["blocked_numbers"]
         self.gban = self.db["gban"]
         self.gmute = self.db["gmute"]
         self.greetings = self.db["greetings"]
@@ -579,6 +580,22 @@ class Database:
     async def get_all_gachabots_id(self) -> list:
         data = await self.gachabots.distinct("bot")
         return data
+    async def block_number(self, phone_number: str):
+        await self.blocked_numbers.update_one(
+            {"phone_number": phone_number},
+            {"$set": {"blocked": True}},
+            upsert=True,
+        )
+
+    async def unblock_number(self, phone_number: str):
+        await self.blocked_numbers.delete_one({"phone_number": phone_number})
+
+    async def is_number_blocked(self, phone_number: str) -> bool:
+        doc = await self.blocked_numbers.find_one({"phone_number": phone_number})
+        return bool(doc and doc.get("blocked", False))
+
+    async def get_all_blocked_numbers(self):
+        return [i async for i in self.blocked_numbers.find({})]
 
 
 db = Database(Config.DATABASE_URL)
