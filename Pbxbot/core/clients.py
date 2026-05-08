@@ -108,9 +108,8 @@ class PbxClient(Client):
             return False
 
     async def start_message(self, version: dict) -> None:
-        await self.bot.send_animation(
+        await self.bot.send_message(
                         Config.LOGGER_ID,
-            "https://i.ibb.co/ZRf6fHrw/x.jpg",
             f"**{Symbols.check_mark} Oᴡɴ Usᴇʀʙᴏᴛ ɪs.ɴᴏᴡ ᴏɴʟɪɴᴇ!**\n\n"
             f"**{Symbols.triangle_right}  ᴄʟɪᴇɴᴛs ➠ ** `{len(self.users)}`\n"
             f"**{Symbols.triangle_right} ᴘʟᴜɢɪɴs ➠ ** `{len(Config.CMD_MENU)}`\n"
