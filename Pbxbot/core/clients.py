@@ -128,12 +128,6 @@ class PbxClient(Client):
                         InlineKeyboardButton(" sᴛᴀʀᴛ ᴍᴇ", url=f"https://t.me/{self.bot.me.username}?start=start"),
                         InlineKeyboardButton(" ϻᴜsɪᴄ", url="t.me/kittuxrobot"),
                     ],
-                    [
-                        InlineKeyboardButton("ᴋ ᴀ ɪ ꜱ ᴇ ɴ", url="https://t.me/quotll"),
-                    ],
-                    [
-                    InlineKeyboardButton("˹ sυᴘᴘσʀᴛ ˼", url="https://t.me/GHOULS_SUPPORT"),
-                    ],
                 ]
             ),
         )
