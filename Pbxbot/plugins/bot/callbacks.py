@@ -9,12 +9,6 @@ from . import HELP_MSG, START_MSG, Config, Symbols, Pbxbot
 
 
 async def check_auth_click(cb: CallbackQuery) -> bool:
-    if cb.from_user.id not in Config.AUTH_USERS:
-        await cb.answer(
-            "You are not authorized to use this bot. \n\n</> @PBX_CHAT",
-            show_alert=True,
-        )
-        return False
     return True
 
 
