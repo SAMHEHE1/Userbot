@@ -8,7 +8,7 @@ from pyrogram.types import InputMediaPhoto
 
 # ================= IMAGE =================
 
-START_PIC = "YOUR_IMAGE_LINK"
+START_PIC = "https://i.ibb.co/ZRf6fHrw/x.jpg"
 
 
 # ================= START MESSAGE =================
