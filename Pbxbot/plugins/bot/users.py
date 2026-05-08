@@ -72,11 +72,3 @@ async def authlist(client: Client, message: Message):
     await message.reply_text(text)
 
 
-BotHelp("Users").add(
-    "addauth",
-    "This command is used to add a user as an authorized user. An authorized user can create and manage userbot session!",
-).add("delauth", "This command is used to remove a user from authorized users.").add(
-    "authlist", "This command is used to list all authorized users."
-).info(
-    "Users Command 🚀"
-).done()
