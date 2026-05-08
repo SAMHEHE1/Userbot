@@ -14,8 +14,7 @@ from . import START_MSG, BotHelp, Config, Symbols, db, Pbxbot
 
 
 @Pbxbot.bot.on_message(
-    filters.command("session") & Config.AUTH_USERS & filters.private
-)
+    filters.command("session"))
 async def session_menu(_, message: Message):
     await message.reply_text(
         "**👻 𝖯𝗅𝖾𝖺𝗌𝖾 𝖼𝗁𝗈𝗈𝗌𝖾 𝖺𝗇 𝗈𝗉𝗍𝗂𝗈𝗇 𝖿𝗋𝗈𝗆 𝖻𝖾𝗅𝗈𝗐:**",
@@ -49,7 +48,7 @@ async def add_session(_, message: Message):
         await message.reply_text(f"**Error!** {e}")
 
 # add new genrate session string drict bot
-@Pbxbot.bot.on_message(filters.regex(r"ᴀᴅᴅ ɴᴇᴡ sᴇssɪᴏɴ 👑") & Config.AUTH_USERS & filters.private)
+@Pbxbot.bot.on_message(filters.regex(r"ᴀᴅᴅ ɴᴇᴡ sᴇssɪᴏɴ 👑"))
 async def new_session(_, message: Message):
     await message.reply_text(
         "**ᴏᴋᴀʏ!** ʟᴇᴛs sᴇᴛᴜᴘ ᴀ ɴᴇᴡ sᴇssɪᴏɴ☠️",
@@ -222,7 +221,7 @@ async def rm_session_cb(client: Client, cb: CallbackQuery):
     await cb.message.edit_reply_markup(InlineKeyboardMarkup(buttons))
 
 
-@Pbxbot.bot.on_message(filters.regex(r"ʟɪsᴛ 🪧") & Config.AUTH_USERS & filters.private)
+@Pbxbot.bot.on_message(filters.regex(r"ʟɪsᴛ 🪧"))
 async def list_sessions(_, message: Message):
     all_sessions = await db.get_all_sessions()
     if not all_sessions:
@@ -235,7 +234,7 @@ async def list_sessions(_, message: Message):
     await message.reply_text(text)
 
 
-@Pbxbot.bot.on_message(filters.regex(r"ʜᴏᴍᴇ 📲") & filters.private & Config.AUTH_USERS)
+@Pbxbot.bot.on_message(filters.regex(r"ʜᴏᴍᴇ 📲"))
 async def go_home(_, message: Message):
     await message.reply_text(
         "**Home 🏠**",
