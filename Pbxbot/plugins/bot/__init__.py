@@ -3,42 +3,56 @@ from Pbxbot.core.config import Config, Symbols
 from Pbxbot.core.database import db
 from Pbxbot.plugins.help import BotHelp
 
+from pyrogram.types import InputMediaPhoto
+
+
+# ================= IMAGE =================
+
+START_PIC = "YOUR_IMAGE_LINK"
+
+
+# ================= START MESSAGE =================
 
 START_MSG = """
-👋 **𝖦𝗋𝖾𝖾𝗍𝗂𝗇𝗀𝗌, {0} - 𝗐𝖺𝗋𝗋𝗂𝗈𝗋𝗌 𝗈𝖿 Pbxbot 2.0!** 👹 𝖨 𝖺𝗆 𝗒𝗈𝗎𝗋 𝗍𝗋𝗎𝗌𝗍𝗒 𝖼𝗈𝗆𝗉𝖺𝗇𝗂𝗈𝗇, 𝗍𝗁𝖾 **Pbxbot 2.0 𝖠𝗌𝗌𝗂𝗌𝗍𝖺𝗇𝗍!** 🚀
+**┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤͟͟͞͞‌‌‌‌★**
+**┆◍ ʜᴇʏ, ɪ ᴀᴍ : [Oᴡɴ Usᴇʀʙᴏᴛ](https://t.me/OwnUserbot)**
+**┆● ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ !**
+**└──────────────────•**
 
-👋🏻ɪ ᴀᴍ ᴀᴅᴠᴀɴᴄᴇᴅ ⛏ ᴀɴᴅ sᴜᴘᴇʀғᴀsᴛ ⛓ᴛᴇʟᴇɢʀᴀᴍ  ᴘʙx 2.0 ᴜsᴇʀʙᴏᴛ 🤖 .
-🦋ᴡʜᴇᴛʜᴇʀ ɪᴛ's ᴄʀᴇᴀᴛɪɴɢ, ᴅᴇʟᴇᴛɪɴɢ 🚫 ᴏʀ ᴜᴘᴅᴀᴛɪɴɢ 🔧 ʏᴏᴜʀ ᴜsᴇʀʙᴏᴛ, ɪ'ᴠᴇ ɢᴏᴛ ʏᴏᴜʀ ʙᴀᴄᴋ 🧹.
-💀ᴍᴀʏ ʏᴏᴜʀ ᴄᴏᴍᴍᴀɴᴅs 📲 ʙᴇ sᴡɪғᴛ ᴀɴᴅ ʏᴏᴜʀ sᴇssɪᴏɴ ʟᴇɢᴇɴᴅᴀʀʏ ☠.
+**➻ ᴀ ғᴀsᴛ & ᴘᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɪᴅ ᴜsᴇʀ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ғᴇᴀᴛᴜʀᴇs.**
 
-**𝖶𝖾𝗅𝖼𝗈𝗆𝖾 𝗍𝗈 Pbxbot 2.0 𝖠𝗌𝗌𝗂𝗌𝗍𝖺𝗇𝗍 – 𝗐𝗁𝖾𝗋𝖾 Pbxbot 2.0 𝗅𝖾𝗀𝖺𝖼𝗒 𝗅𝗂𝗏𝖾𝗌 𝗈𝗇 🤖!**
+**•── ⋅ ⋅ ⋅ ────── ⋅ ⋅ ────── ⋅ ⋅ ⋅ ──•**
 
-**❤️ @PBX_CHAT ❤️**
+**❖ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ғᴏʀ ғᴜɴ ʀᴀɪᴅ sᴘᴀᴍ.**
+
+**❖ ɪ ᴄᴀɴ ʙᴏᴏsᴛ ʏᴏᴜʀ ɪᴅ ᴡɪᴛʜ ᴀɴɪᴍᴀᴛɪᴏɴ**
+
+**•── ⋅ ⋅ ⋅ ────── ⋅ ⋅ ────── ⋅ ⋅ ⋅ ──•**
+
+**๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴘ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs.**
 """
 
+
+# ================= HELP MESSAGE =================
+
 HELP_MSG = """
-**⚙️ 𝖧𝖾𝗅𝗉★**
+**✦ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅꜱ**
 
-**__» All commands are categorized and you can use these buttons below to navigate each category and get respective commands.__
-__» Feel free to contact us if you need any help regarding the bot.__**
+**➻ /start - ꜱᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ**  
+**➻ /help - ᴏᴘᴇɴ ʜᴇʟᴘ ᴍᴇɴᴜ**  
+**➻ /add - ʜᴏsᴛ ᴛʜᴇ ʙᴏᴛ**  
+**➻ /session - ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ sᴇssɪᴏɴ**
 
-**❤️ @PBX_CHAT ❤️**
-  
-  **★USERBOT DEPLOY★**
+---
 
-**since i never mentioned how to activate userbot on your account. here's a little guide.
+**✦ ᴀʙᴏᴜᴛ ᴛʜɪꜱ ʙᴏᴛ**
 
-1. deployment is successful and bot is working .
+**◍ ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴛᴏ ʙᴏᴏꜱᴛ ʏᴏᴜʀ ɪᴅ ᴡɪᴛʜ ʙᴇᴀᴜᴛɪꜰᴜʟ ᴀɴɪᴍᴀᴛɪᴏɴ.**
 
-2. send /session to your helper bot.
+**◍ ꜱᴜᴘᴘᴏʀᴛᴇᴅ :- ʀᴇᴘʟʏ-ʀᴀɪᴅ, ɪᴅ-ᴄʟᴏɴᴇ, ʀᴀɪᴅ, ꜱᴘᴀᴍ, ᴜꜱᴇʀ-ᴛᴀɢɢᴇʀ ᴇᴛᴄ.**
 
-3. now click on "new" button and Genrate Pyrogram String Session.
+**• ᴀɴʏ ɪssᴜᴇs ᴄᴏɴᴛᴀᴄᴛ ᴜs :**
 
-4. send /add { Paste Your Genrate Session }
-
-5. follow all the prompts and do the needful.
-
-6. restart the bot with /restart command.**
-
-**❤️ @PBX_CHAT ❤️**
+**◌ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : [ᴋᴀɪsᴇɴ-ʙσᴛs](https://t.me/kaisenbots)**  
+**◌ ᴅᴇᴠᴇʟᴏᴘᴇʀ : [ᴋ ᴀ ɪ s ᴇ ɴ](https://t.me/kaisenbots)**
 """
