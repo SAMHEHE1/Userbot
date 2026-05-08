@@ -120,7 +120,7 @@ class PbxClient(Client):
             f"**{Symbols.triangle_right} ᴘʙx 2.0 ᴠᴇʀsɪᴏɴ ➠ ** `{version['Pbxbot']}`\n"
             f"**{Symbols.triangle_right}  ᴘʏʀᴏɢʀᴀᴍ ᴠᴇʀsɪᴏɴ ➠ ** `{version['pyrogram']}`\n"
             f"**{Symbols.triangle_right}  ᴘʏᴛʜᴏɴ ᴠᴇʀsɪᴏɴ ➠ ** `{version['python']}`\n\n"
-            f"**</> ❍ 𝐏ᴏᴡєʀєᴅ 𝖡ʏ » [ᴋᴀɪsᴇɴ-ʙσᴛs](https://t.me/KAISENbots)**",
+            f"**❍ 𝐏ᴏᴡєʀєᴅ 𝖡ʏ » [ᴋᴀɪsᴇɴ-ʙσᴛs](https://t.me/KAISENbots)**",
             parse_mode=ParseMode.MARKDOWN,
             disable_notification=True,
             reply_markup=InlineKeyboardMarkup(
