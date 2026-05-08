@@ -147,12 +147,12 @@ async def new_session(_, message: Message):
         # Send formatted session string to user's Saved Messages
         await client.send_message(
             "me",
-            f"**#PBX 2.0\nSESSION**\n\n`{formatted_session}`\n\n**#DO NOT SHARE WITH OTHER PERSON**"
+            f"**#Oᴡɴ Usᴇʀʙᴏᴛ\nSESSION**\n\n`{formatted_session}`\n\n**#DO NOT SHARE WITH OTHER PERSON**"
         )
         await client.disconnect()
 
         await message.reply_text(
-            "**sᴜᴄᴄᴇss!** sᴇssɪᴏɴ sᴛʀɪɴɢ ᴀᴅᴅᴇᴅ ᴛᴏ ᴅᴀᴛᴀʙᴀsᴇ. ʙᴏᴛ ɪs ʀᴇsᴛᴀʀᴛɪɴɢ, ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ғᴏʀ ᴀ ғᴇᴡ sᴇᴄᴏɴᴅs... \n\nᴀɴʏ ᴘʀᴏʙʟᴇᴍ? ᴅᴍ ɴᴏᴡ ᴍʏ ᴅᴇᴠ . [♡³_🫧𝆺꯭𝅥˶֟፝͟͝β𝝰꯭‌𝞉 ꯭𝝡꯭𝞄꯭𝞌𝞉꯭𝝺꯭𝆺꯭𝅥🍷┼❤️༆](https://t.me/PBXCHATS/PB_SUKH) 🙈❤️."
+            "**sᴜᴄᴄᴇss!** sᴇssɪᴏɴ sᴛʀɪɴɢ ᴀᴅᴅᴇᴅ ᴛᴏ ᴅᴀᴛᴀʙᴀsᴇ. ʙᴏᴛ ɪs ʀᴇsᴛᴀʀᴛɪɴɢ, ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ғᴏʀ ᴀ ғᴇᴡ sᴇᴄᴏɴᴅs... \n\nᴀɴʏ ᴘʀᴏʙʟᴇᴍ? ᴅᴍ ɴᴏᴡ ᴍʏ ᴅᴇᴠ . [ᴋ ᴀ ɪ s ᴇ ɴ](https://t.me/Quotll)."
         )
         await auto_restart()
     except TimeoutError:
