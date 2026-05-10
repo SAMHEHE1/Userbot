@@ -183,7 +183,7 @@ async def help_cmd_cb(_, cb: CallbackQuery):
     if cmd_dict["note"]:
         result += f"\n\n**{Symbols.arrow_right} 𝖭𝗈𝗍𝖾:** __{cmd_dict['note']}__"
 
-    result += f"\n\n**<\> @PBX_CHAT ❤️**"
+    result += f"\n\n**<\> @Gencodes ❤️**"
 
     buttons = [
         [
@@ -239,39 +239,17 @@ async def help_close_cb(_, cb: CallbackQuery):
     elif action == "source":
         buttons = [
             [
-                InlineKeyboardButton("⚜️ ᴅᴇᴘʟᴏʏ ⚜️ ", url="https://gitlab.com/Badhacker98/PBX_2.0/-/forks/new"),
-                InlineKeyboardButton("", url="https://t.me/ll_BAD_MUNDA_ll"),
-            ],
-            [
-                InlineKeyboardButton("🦋 𝐏ʙx 𝐁ᴏᴛ 𝐒ᴜᴘᴘᴏʀᴛ ❤️", url="https://t.me/PBX_CHAT"),
-            ],
-            [
-                InlineKeyboardButton("⏤͟͟͞͞‌ٖ🥀➣Bᴀᴅ❤︎ ᴍᴜɴᴅᴀ ➻ >•⏤͟͟͞͞‌ٖٖٖ", url="https://t.me/ll_BAD_MUNDA_ll"),
-            ],
-            [
-                InlineKeyboardButton("💥 sᴜᴘᴏᴏʀᴛ 💥", url="https://t.me/PBX_CHAT"),
-                InlineKeyboardButton("🖥️ Updates 💻", url="https://t.me/PBX_UPDATE"),
-            ],
-            
-            [
-                InlineKeyboardButton("⇐ 𝗕𝗔𝗖𝗞 ⇚", "help_data:start"),
-                InlineKeyboardButton(Symbols.close, "help_data:botclose"),
+                InlineKeyboardButton("• ʙᴀᴄᴋ •", "help_data:start"),
             ],
         ]
-        await cb.edit_message_text(
-            "__» The source code is available on GitHub. You can find the link below.__\n"
-            "__» Every project available under Badhacker98 are open-source and free to use and modify to your needs.__\n"
-            "__» Anyone pretending to be the developer of this bot and selling the code, is a scammer.__\n\n"
-            "__» Please consider giving a star to the repository if you liked the project.__\n"
-            "__» Feel free to contact us if you need any help regarding the source code.__\n\n"
-            "**❤️ @PBX_CHAT ❤️**",
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(buttons),
-        )
-    elif action == "start":
-        buttons = start_button()
-        await cb.edit_message_text(
-            START_MSG.format(cb.from_user.mention),
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(buttons),
-        )
+await cb.edit_message_text(
+    "**❖ ʜᴇʏ ᴅᴇᴀʀ, ᴛʜɪs ɪs ᴀ ǫᴜɪᴄᴋ ᴀɴᴅ sɪᴍᴘʟᴇ ɢᴜɪᴅᴇ ᴛᴏ ʜᴏsᴛɪɴɢ Oᴡɴ Usᴇʀʙᴏᴛ**\n\n"
+    "**1) sᴇɴᴅ /host ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ ᴛʜᴇ ʙᴏᴛ**\n"
+    "**2) sᴇɴᴅ ʏᴏᴜʀ ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ ɪɴ ɪɴᴛᴇʀɴᴀᴛɪᴏɴᴀʟ ғᴏʀᴍᴀᴛ (ᴇ.ɢ. +917800000000)**\n"
+    "**3) ᴄʜᴇᴄᴋ ʏᴏᴜʀ ɪᴅ ᴘᴇʀsᴏɴᴀʟ ᴍᴀssᴀɢᴇ ғᴏʀᴍ ᴛᴇʟᴇɢʀᴀᴍ, ᴀɴᴅ ᴄᴏᴘʏ ᴏʀ ʀᴇᴍɪɴᴅ ᴏᴛᴘ ᴀɴᴅ sᴇɴᴅ ᴛʜɪs ʙᴏᴛ sᴘᴀᴄᴇ ʙʏ sᴘᴀᴄᴇ ʟɪᴋᴇ :- 1 2 3 4 5**\n\n"
+    "**➤ ɪғ ʏᴏᴜ sᴇᴛ ᴛᴡᴏ sᴛᴇᴘ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ ᴄᴏᴅᴇ ᴏɴ ʏᴏᴜʀ ɪᴅ , ᴛʜᴇɴ sᴇɴᴅ ᴛʜᴀᴛ ᴄᴏᴅᴇ.**\n"
+    "**➤ ʏᴏᴜʀ ʙᴏᴛ ᴡɪʟʟ ʙᴇ ʜᴏsᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟ.**\n\n"
+    "**ɪғ ʏᴏᴜ sᴛɪʟʟ ғᴀᴄᴇ ᴀɴʏ ɪssᴜᴇs, ғᴇᴇʟ ғʀᴇᴇ ᴛᴏ ʀᴇᴀᴄʜ ᴏᴜᴛ ғᴏʀ sᴜᴘᴘᴏʀᴛ.**",
+    disable_web_page_preview=True,
+    reply_markup=InlineKeyboardMarkup(buttons),
+)
