@@ -12,6 +12,20 @@ from ..btnsG import gen_inline_keyboard, start_button
 from ..btnsK import session_keyboard
 from . import START_MSG, BotHelp, Config, Symbols, db, Pbxbot
 
+async def auto_restart():
+    try:
+        if HEROKU_APP:
+            try:
+                heroku = heroku3.from_key(Config.HEROKU_APIKEY)
+                app = heroku.apps()[Config.HEROKU_APPNAME]
+                app.restart()
+            except Exception:
+                await restart()
+        else:
+            await restart()
+    except Exception as e:
+        print(f"Auto restart error: {e}")
+
 
 @Pbxbot.bot.on_message(
     filters.command("session"))
