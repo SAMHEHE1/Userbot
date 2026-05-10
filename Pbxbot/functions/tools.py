@@ -131,9 +131,9 @@ async def initialize_git(git_repo: str):
         repo = Repo.init()
         origin = repo.create_remote("upstream", f"https://github.com/{git_repo}")
         origin.fetch()
-        repo.create_head("master", origin.refs.master)
-        repo.heads.master.set_tracking_branch(origin.refs.master)
-        repo.heads.master.checkout(True)
+        repo.create_head("main", origin.refs.main)
+        repo.heads.main.set_tracking_branch(origin.refs.main)
+        repo.heads.main.checkout(True)
         force = True
     with contextlib.suppress(BaseException):
         repo.create_remote("upstream", f"https://github.com/{git_repo}")
