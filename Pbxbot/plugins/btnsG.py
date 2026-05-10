@@ -105,11 +105,11 @@ async def gen_bot_help_buttons() -> list[list[InlineKeyboardButton]]:
 def start_button() -> list[list[InlineKeyboardButton]]:
     return [
         [
-            InlineKeyboardButton(" ᴀʙᴏᴜᴛ ", "help_data:bothelp"),
-            InlineKeyboardButton(" ᴏᴡɴᴇʀ ", url="https://t.me/Quotll"),
+            InlineKeyboardButton(" 📗 ᴀʙᴏᴜᴛ ", "help_data:bothelp"),
+            InlineKeyboardButton(" 💌 ᴏᴡɴᴇʀ ", url="https://t.me/Quotll"),
             ],
         [
-            InlineKeyboardButton(" ɢᴜɪᴅᴇ ", "help_data:source"),
+            InlineKeyboardButton(" 💡 ɢᴜɪᴅᴇ ", "help_data:source"),
         ],
         [
         InlineKeyboardButton("˹ υᴘᴅᴧᴛєs ˼" ,  url="https://t.me/kaisenbots"),
