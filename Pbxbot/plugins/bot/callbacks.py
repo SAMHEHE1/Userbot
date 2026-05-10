@@ -239,7 +239,7 @@ async def help_close_cb(_, cb: CallbackQuery):
     elif action == "source":
         buttons = [
     [
-        InlineKeyboardButton("• ʙᴀᴄᴋ •", callback_data="help_data:start"),
+        InlineKeyboardButton(Symbols.close, "help_data:botclose"),
     ],
         ]
         await cb.edit_message_text(
