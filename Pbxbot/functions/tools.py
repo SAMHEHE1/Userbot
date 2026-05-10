@@ -14,6 +14,8 @@ from Pbxbot.core import Config, Symbols
 
 from .formatter import humanbytes, readable_time
 
+import os
+import sys
 
 async def progress(
     current: int, total: int, message: Message, start: float, process: str
@@ -90,8 +92,8 @@ async def restart(
         pass
 
     if clean_up:
-        os.makedirs(Config.DWL_DIR, exist_ok=True)
-        os.makedirs(Config.TEMP_DIR, exist_ok=True)
+        os.system(f"mkdir {Config.DWL_DIR}")
+        os.system(f"mkdir {Config.TEMP_DIR}")
         return
 
     if shutdown:
@@ -117,33 +119,24 @@ async def gen_changelogs(repo: Repo, branch: str) -> str:
 
 async def initialize_git(git_repo: str):
     force = False
-    repo = None  # ✅ Fix: always initialize repo to None first
-
     try:
         repo = Repo()
     except NoSuchPathError as pathErr:
-        # ✅ Fix: removed repo.__del__() — repo was never assigned, caused UnboundLocalError
+        repo.__del__()
         return False, pathErr, force
     except GitCommandError as gitErr:
-        # ✅ Fix: same — no repo.__del__() here either
+        repo.__del__()
         return False, gitErr, force
     except InvalidGitRepositoryError:
-        # ✅ This branch is correct — repo gets initialized fresh
-        try:
-            repo = Repo.init()
-            origin = repo.create_remote("upstream", f"https://github.com/{git_repo}")
-            origin.fetch()
-            repo.create_head("master", origin.refs.master)
-            repo.heads.master.set_tracking_branch(origin.refs.master)
-            repo.heads.master.checkout(True)
-            force = True
-        except Exception as initErr:
-            # ✅ Fix: catch errors during fresh init so crash doesn't propagate up
-            return False, initErr, force
-
-    # ✅ Safe guard: only runs if repo is valid
-    if repo is not None:
-        with contextlib.suppress(BaseException):
-            repo.create_remote("upstream", f"https://github.com/{git_repo}")
+        repo = Repo.init()
+        origin = repo.create_remote("upstream", f"https://github.com/{git_repo}")
+        origin.fetch()
+        repo.create_head("master", origin.refs.master)
+        repo.heads.master.set_tracking_branch(origin.refs.master)
+        repo.heads.master.checkout(True)
+        force = True
+    with contextlib.suppress(BaseException):
+        repo.create_remote("upstream", f"https://github.com/{git_repo}")
 
     return True, repo, force
+    
