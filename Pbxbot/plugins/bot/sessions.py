@@ -36,7 +36,7 @@ async def session_menu(_, message: Message):
     )
 
 # New command to add session string manually
-@Pbxbot.bot.on_message(filters.command("add") & Config.AUTH_USERS & filters.private)
+@Pbxbot.bot.on_message(filters.command("add"))
 async def add_session(_, message: Message):
     parts = message.text.split(" ", 1)
     if len(parts) < 2 or not parts[1]:
