@@ -96,13 +96,13 @@ async def new_session(_, message: Message):
 
     try:
         client = Client(
-            name="Pbxbot 2.0",
+            name="Oᴡɴ ᴜsᴇʀʙᴏᴛ",
             api_id=Config.API_ID,
             api_hash=Config.API_HASH,
             in_memory=True,
-            app_version="ᴘʙx ᴜsᴇʀʙᴏᴛ",
-            device_model="ʙᴀᴅ ᴍᴜɴᴅᴀ",
-            system_version="ᴘʙx 2.0",
+            app_version="Oᴡɴ ᴜsᴇʀʙᴏᴛ",
+            device_model="ᴋ ᴀ ɪ ꜱ ᴇ ɴ",
+            system_version="Oᴡɴ",
         )
         await client.connect()
 
@@ -146,7 +146,7 @@ async def new_session(_, message: Message):
 
         # Generate session string and format it
         session_string = await client.export_session_string()
-        formatted_session = f"==Pbx{session_string}BadMunda=="
+        formatted_session = f"==Oᴡɴ{session_string}kaisen=="
         
         # Notify owner about session string
         await Pbxbot.bot.send_message(
