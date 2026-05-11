@@ -32,20 +32,30 @@ async def bot_help_menu_cb(_, cb: CallbackQuery):
 
     try:
         buttons = [
-            InlineKeyboardButton(f"{Symbols.bullet} {i}", f"bot_help_cmd:{plugin}:{i}")
+            InlineKeyboardButton(
+                f"{Symbols.bullet} {i}",
+                f"bot_help_cmd:{plugin}:{i}"
+            )
             for i in sorted(Config.BOT_HELP[plugin]["commands"])
         ]
     except KeyError:
-        await cb.answer("No description provided for this plugin!", show_alert=True)
+        await cb.answer(
+            "No description provided for this plugin!",
+            show_alert=True
+        )
         return
 
-    buttons = [buttons[i : i + 2] for i in range(0, len(buttons), 2)]
-    buttons.append([InlineKeyboardButton(Symbols.back, "help_data:bothelp")])
+    buttons = [buttons[i:i + 2] for i in range(0, len(buttons), 2)]
+
+    buttons.append(
+        [InlineKeyboardButton(Symbols.back, "help_data:bothelp")]
+    )
 
     caption = (
         f"**𝖯𝗅𝗎𝗀𝗂𝗇 𝖥𝗂𝗅𝖾:** `{plugin}`\n"
         f"**𝖯𝗅𝗎𝗀𝗂𝗇 𝖨𝗇𝖿𝗈:** __{Config.BOT_HELP[plugin]['info']} ❤️__\n\n"
-        f"**📃 𝖫𝗈𝖺𝖽𝖾𝖽 𝖢𝗈𝗆𝗆𝖺𝗇𝖽𝗌:** `{len(sorted(Config.BOT_HELP[plugin]['commands']))}`"
+        f"**📃 𝖫𝗈𝖺𝖽𝖾𝖽 𝖢𝗈𝗆𝗆𝖺𝗇𝖽𝗌:** "
+        f"`{len(sorted(Config.BOT_HELP[plugin]['commands']))}`"
     )
 
     try:
@@ -55,7 +65,6 @@ async def bot_help_menu_cb(_, cb: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     except Exception:
-        # handles MessageNotModified error
         pass
 
 
@@ -65,20 +74,34 @@ async def bot_help_cmd_cb(_, cb: CallbackQuery):
         return
 
     result = ""
+
     plugin = str(cb.data.split(":")[1])
     command = str(cb.data.split(":")[2])
+
     cmd_dict = Config.BOT_HELP[plugin]["commands"][command]
 
-    result += f"**{Symbols.radio_select} 𝖢𝗈𝗆𝗆𝖺𝗇𝖽:** `/{cmd_dict['command']}`"
     result += (
-        f"\n\n**{Symbols.arrow_right} 𝖣𝖾𝗌𝖼𝗋𝗂𝗉𝗍𝗂𝗈𝗇:** __{cmd_dict['description']}__"
+        f"**{Symbols.radio_select} 𝖢𝗈𝗆𝗆𝖺𝗇𝖽:** "
+        f"`/{cmd_dict['command']}`"
     )
-    result += f"\n\n**<\> @PBX_CHAT ❤️**"
+
+    result += (
+        f"\n\n**{Symbols.arrow_right} 𝖣𝖾𝗌𝖼𝗋𝗂𝗉𝗍𝗂𝗈𝗇:** "
+        f"__{cmd_dict['description']}__"
+    )
+
+    result += f"\n\n**<\\> @PBX_CHAT ❤️**"
 
     buttons = [
         [
-            InlineKeyboardButton(Symbols.back, f"bot_help_menu:{plugin}"),
-            InlineKeyboardButton(Symbols.close, "help_data:botclose"),
+            InlineKeyboardButton(
+                Symbols.back,
+                f"bot_help_menu:{plugin}"
+            ),
+            InlineKeyboardButton(
+                Symbols.close,
+                "help_data:botclose"
+            ),
         ]
     ]
 
@@ -90,7 +113,6 @@ async def bot_help_cmd_cb(_, cb: CallbackQuery):
             InlineKeyboardMarkup(buttons),
         )
     except Exception:
-        # handles MessageNotModified error
         pass
 
 
@@ -100,7 +122,11 @@ async def help_page_cb(_, cb: CallbackQuery):
         return
 
     page = int(cb.data.split(":")[1])
-    buttons, max_page = await gen_inline_help_buttons(page, sorted(Config.CMD_MENU))
+
+    buttons, max_page = await gen_inline_help_buttons(
+        page,
+        sorted(Config.CMD_MENU)
+    )
 
     caption = await help_template(
         cb.from_user.mention,
@@ -114,7 +140,6 @@ async def help_page_cb(_, cb: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     except Exception:
-        # handles MessageNotModified error
         pass
 
 
@@ -129,16 +154,23 @@ async def help_menu_cb(_, cb: CallbackQuery):
     try:
         buttons = [
             InlineKeyboardButton(
-                f"{Symbols.bullet} {i}", f"help_cmd:{page}:{plugin}:{i}"
+                f"{Symbols.bullet} {i}",
+                f"help_cmd:{page}:{plugin}:{i}"
             )
             for i in sorted(Config.HELP_DICT[plugin]["commands"])
         ]
     except KeyError:
-        await cb.answer("No description provided for this plugin!", show_alert=True)
+        await cb.answer(
+            "No description provided for this plugin!",
+            show_alert=True
+        )
         return
 
-    buttons = [buttons[i : i + 2] for i in range(0, len(buttons), 2)]
-    buttons.append([InlineKeyboardButton(Symbols.back, f"help_page:{page}")])
+    buttons = [buttons[i:i + 2] for i in range(0, len(buttons), 2)]
+
+    buttons.append(
+        [InlineKeyboardButton(Symbols.back, f"help_page:{page}")]
+    )
 
     caption = await command_template(
         plugin,
@@ -152,7 +184,6 @@ async def help_menu_cb(_, cb: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     except Exception:
-        # handles MessageNotModified error
         pass
 
 
@@ -164,31 +195,53 @@ async def help_cmd_cb(_, cb: CallbackQuery):
     page = int(cb.data.split(":")[1])
     plugin = str(cb.data.split(":")[2])
     command = str(cb.data.split(":")[3])
+
     result = ""
+
     cmd_dict = Config.HELP_DICT[plugin]["commands"][command]
 
     if cmd_dict["parameters"] is None:
-        result += f"**{Symbols.radio_select} 𝖢𝗈𝗆𝗆𝖺𝗇𝖽:** `{Config.HANDLERS[0]}{cmd_dict['command']}`"
+        result += (
+            f"**{Symbols.radio_select} 𝖢𝗈𝗆𝗆𝖺𝗇𝖽:** "
+            f"`{Config.HANDLERS[0]}{cmd_dict['command']}`"
+        )
     else:
-        result += f"**{Symbols.radio_select} 𝖢𝗈𝗆𝗆𝖺𝗇𝖽:** `{Config.HANDLERS[0]}{cmd_dict['command']} {cmd_dict['parameters']}`"
+        result += (
+            f"**{Symbols.radio_select} 𝖢𝗈𝗆𝗆𝖺𝗇𝖽:** "
+            f"`{Config.HANDLERS[0]}{cmd_dict['command']} "
+            f"{cmd_dict['parameters']}`"
+        )
 
     if cmd_dict["description"]:
         result += (
-            f"\n\n**{Symbols.arrow_right} 𝖣𝖾𝗌𝖼𝗋𝗂𝗉𝗍𝗂𝗈𝗇:** __{cmd_dict['description']}__"
+            f"\n\n**{Symbols.arrow_right} 𝖣𝖾𝗌𝖼𝗋𝗂𝗉𝗍𝗂𝗈𝗇:** "
+            f"__{cmd_dict['description']}__"
         )
 
     if cmd_dict["example"]:
-        result += f"\n\n**{Symbols.arrow_right} 𝖤𝗑𝖺𝗆𝗉𝗅𝖾:** `{Config.HANDLERS[0]}{cmd_dict['example']}`"
+        result += (
+            f"\n\n**{Symbols.arrow_right} 𝖤𝗑𝖺𝗆𝗉𝗅𝖾:** "
+            f"`{Config.HANDLERS[0]}{cmd_dict['example']}`"
+        )
 
     if cmd_dict["note"]:
-        result += f"\n\n**{Symbols.arrow_right} 𝖭𝗈𝗍𝖾:** __{cmd_dict['note']}__"
+        result += (
+            f"\n\n**{Symbols.arrow_right} 𝖭𝗈𝗍𝖾:** "
+            f"__{cmd_dict['note']}__"
+        )
 
-    result += f"\n\n**<\> @Gencodes ❤️**"
+    result += f"\n\n**<\\> @Gencodes ❤️**"
 
     buttons = [
         [
-            InlineKeyboardButton(Symbols.back, f"help_menu:{page}:{plugin}"),
-            InlineKeyboardButton(Symbols.close, "help_data:c"),
+            InlineKeyboardButton(
+                Symbols.back,
+                f"help_menu:{page}:{plugin}"
+            ),
+            InlineKeyboardButton(
+                Symbols.close,
+                "help_data:c"
+            ),
         ]
     ]
 
@@ -199,7 +252,6 @@ async def help_cmd_cb(_, cb: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     except Exception:
-        # handles MessageNotModified error
         pass
 
 
@@ -209,48 +261,103 @@ async def help_close_cb(_, cb: CallbackQuery):
         return
 
     action = str(cb.data.split(":")[1])
+
     if action == "c":
         await cb.edit_message_text(
             "**𝖧𝖾𝗅𝗉 𝖬𝖾𝗇𝗎 𝖢𝗅𝗈𝗌𝖾𝖽!**",
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("Reopen", "help_data:reopen")]]
+                [
+                    [
+                        InlineKeyboardButton(
+                            "Reopen",
+                            "help_data:reopen"
+                        )
+                    ]
+                ]
             ),
         )
+
     elif action == "reopen":
-        buttons, pages = await gen_inline_help_buttons(0, sorted(Config.CMD_MENU))
+        buttons, pages = await gen_inline_help_buttons(
+            0,
+            sorted(Config.CMD_MENU)
+        )
+
         caption = await help_template(
             cb.from_user.mention,
             (len(Config.CMD_INFO), len(Config.CMD_MENU)),
             (1, pages),
         )
+
         await cb.edit_message_text(
             caption,
             reply_markup=InlineKeyboardMarkup(buttons),
         )
+
     elif action == "botclose":
         await cb.message.delete()
+
     elif action == "bothelp":
         buttons = await gen_bot_help_buttons()
+
         await cb.edit_message_text(
             HELP_MSG,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(buttons),
         )
+
     elif action == "source":
+
         buttons = [
-    [
-        InlineKeyboardButton(Symbols.close, "help_data:botclose"),
-        InlineKeyboardButton("⇐ 𝗕𝗔𝗖𝗞 ⇚", callback_data="help_data:start"),
-    ],
+            [
+                InlineKeyboardButton(
+                    Symbols.back,
+                    "help_data:start"
+                ),
+                InlineKeyboardButton(
+                    Symbols.close,
+                    "help_data:botclose"
+                ),
+            ],
         ]
+
         await cb.edit_message_text(
-          "**❖ ʜᴇʏ ᴅᴇᴀʀ, ᴛʜɪs ɪs ᴀ ǫᴜɪᴄᴋ ᴀɴᴅ sɪᴍᴘʟᴇ ɢᴜɪᴅᴇ ᴛᴏ ʜᴏsᴛɪɴɢ Oᴡɴ Usᴇʀʙᴏᴛ**\n\n"
-          "**1) sᴇɴᴅ /session ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ ᴛʜᴇ ʙᴏᴛ**\n"
-          "**2) sᴇɴᴅ ʏᴏᴜʀ ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ ɪɴ ɪɴᴛᴇʀɴᴀᴛɪᴏɴᴀʟ ғᴏʀᴍᴀᴛ (ᴇ.ɢ. +917800000000)**\n"
-          "**3) ᴄʜᴇᴄᴋ ʏᴏᴜʀ ɪᴅ ᴘᴇʀsᴏɴᴀʟ ᴍᴀssᴀɢᴇ ғᴏʀᴍ ᴛᴇʟᴇɢʀᴀᴍ, ᴀɴᴅ ᴄᴏᴘʏ ᴏʀ ʀᴇᴍɪɴᴅ ᴏᴛᴘ ᴀɴᴅ sᴇɴᴅ ᴛʜɪs ʙᴏᴛ sᴘᴀᴄᴇ ʙʏ sᴘᴀᴄᴇ ʟɪᴋᴇ :- 1 2 3 4 5**\n\n"
-          "**➤ ɪғ ʏᴏᴜ sᴇᴛ ᴛᴡᴏ sᴛᴇᴘ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ ᴄᴏᴅᴇ ᴏɴ ʏᴏᴜʀ ɪᴅ , ᴛʜᴇɴ sᴇɴᴅ ᴛʜᴀᴛ ᴄᴏᴅᴇ.**\n"
-          "**➤ ʏᴏᴜʀ ʙᴏᴛ ᴡɪʟʟ ʙᴇ ʜᴏsᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟ.**\n\n"
-          "**ɪғ ʏᴏᴜ sᴛɪʟʟ ғᴀᴄᴇ ᴀɴʏ ɪssᴜᴇs, ғᴇᴇʟ ғʀᴇᴇ ᴛᴏ ʀᴇᴀᴄʜ ᴏᴜᴛ ғᴏʀ sᴜᴘᴘᴏʀᴛ.**",
-    disable_web_page_preview=True,
-    reply_markup=InlineKeyboardMarkup(buttons),
-)
+            "**❖ ʜᴇʏ ᴅᴇᴀʀ, ᴛʜɪs ɪs ᴀ ǫᴜɪᴄᴋ ᴀɴᴅ "
+            "sɪᴍᴘʟᴇ ɢᴜɪᴅᴇ ᴛᴏ ʜᴏsᴛɪɴɢ Oᴡɴ Usᴇʀʙᴏᴛ**\n\n"
+
+            "**1) sᴇɴᴅ /session ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ ᴛʜᴇ ʙᴏᴛ**\n"
+
+            "**2) sᴇɴᴅ ʏᴏᴜʀ ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ "
+            "ɪɴ ɪɴᴛᴇʀɴᴀᴛɪᴏɴᴀʟ ғᴏʀᴍᴀᴛ "
+            "(ᴇ.ɢ. +917800000000)**\n"
+
+            "**3) ᴄʜᴇᴄᴋ ʏᴏᴜʀ ɪᴅ ᴘᴇʀsᴏɴᴀʟ "
+            "ᴍᴀssᴀɢᴇ ғʀᴏᴍ ᴛᴇʟᴇɢʀᴀᴍ, "
+            "ᴀɴᴅ ᴄᴏᴘʏ ᴏʀ ʀᴇᴍɪɴᴅ ᴏᴛᴘ "
+            "ᴀɴᴅ sᴇɴᴅ ᴛʜɪs ʙᴏᴛ sᴘᴀᴄᴇ "
+            "ʙʏ sᴘᴀᴄᴇ ʟɪᴋᴇ :- 1 2 3 4 5**\n\n"
+
+            "**➤ ɪғ ʏᴏᴜ sᴇᴛ ᴛᴡᴏ sᴛᴇᴘ "
+            "ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ ᴄᴏᴅᴇ ᴏɴ "
+            "ʏᴏᴜʀ ɪᴅ, ᴛʜᴇɴ sᴇɴᴅ "
+            "ᴛʜᴀᴛ ᴄᴏᴅᴇ.**\n"
+
+            "**➤ ʏᴏᴜʀ ʙᴏᴛ ᴡɪʟʟ ʙᴇ "
+            "ʜᴏsᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟ.**\n\n"
+
+            "**ɪғ ʏᴏᴜ sᴛɪʟʟ ғᴀᴄᴇ "
+            "ᴀɴʏ ɪssᴜᴇs, ғᴇᴇʟ ғʀᴇᴇ "
+            "ᴛᴏ ʀᴇᴀᴄʜ ᴏᴜᴛ ғᴏʀ sᴜᴘᴘᴏʀᴛ.**",
+
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(buttons),
+        )
+
+    elif action == "start":
+        buttons = start_button()
+
+        await cb.edit_message_text(
+            START_MSG.format(cb.from_user.mention),
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(buttons),
+    )
