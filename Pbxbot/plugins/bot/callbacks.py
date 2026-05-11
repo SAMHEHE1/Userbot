@@ -341,9 +341,12 @@ async def help_close_cb(_, cb: CallbackQuery):
             "ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ ᴄᴏᴅᴇ ᴏɴ "
             "ʏᴏᴜʀ ɪᴅ, ᴛʜᴇɴ sᴇɴᴅ "
             "ᴛʜᴀᴛ ᴄᴏᴅᴇ.**\n"
-
+            
             "**➤ ʏᴏᴜʀ ʙᴏᴛ ᴡɪʟʟ ʙᴇ "
             "ʜᴏsᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟ.**\n\n"
+
+            "**• .help - to see available userbot command raid spam etc.. [ After login ].**"
+
 
             "**ɪғ ʏᴏᴜ sᴛɪʟʟ ғᴀᴄᴇ "
             "ᴀɴʏ ɪssᴜᴇs, ғᴇᴇʟ ғʀᴇᴇ "
