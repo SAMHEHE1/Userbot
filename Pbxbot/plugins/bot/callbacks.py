@@ -240,6 +240,7 @@ async def help_close_cb(_, cb: CallbackQuery):
         buttons = [
     [
         InlineKeyboardButton(Symbols.close, "help_data:botclose"),
+        InlineKeyboardButton("⇐ 𝗕𝗔𝗖𝗞 ⇚", callback_data="help_data:start"),
     ],
         ]
         await cb.edit_message_text(
