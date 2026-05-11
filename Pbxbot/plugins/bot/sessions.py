@@ -260,9 +260,3 @@ async def go_home(_, message: Message):
         reply_markup=InlineKeyboardMarkup(start_button()),
     )
 
-
-BotHelp("Sessions").add(
-    "session", "This command is packed with tools to manage userbot sessions."
-).info(
-    "Session 🚀"
-).done()
