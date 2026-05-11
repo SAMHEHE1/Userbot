@@ -47,14 +47,3 @@ async def restart_clients(_, message: Message):
             await restart()
     except Exception as e:
         LOGS.error(e)
-
-
-BotHelp("Others").add(
-    "start", "To start the bot and get the main menu."
-).add(
-    "help", "To get the help menu with all the command for this assistant bot."
-).add(
-    "restart", "To restart the bot."
-).info(
-    "Some basic commands of the bot."
-).done()
