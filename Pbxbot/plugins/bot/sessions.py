@@ -62,10 +62,10 @@ async def add_session(_, message: Message):
         await message.reply_text(f"**Error!** {e}")
 
 # add new genrate session string drict bot
-@Pbxbot.bot.on_message(filters.regex(r"ᴀᴅᴅ ɴᴇᴡ sᴇssɪᴏɴ 👑"))
+@Pbxbot.bot.on_message(filters.regex(r"ᴀᴅᴅ ɴᴇᴡ sᴇssɪᴏɴ 📟"))
 async def new_session(_, message: Message):
     await message.reply_text(
-        "**ᴏᴋᴀʏ!** ʟᴇᴛs sᴇᴛᴜᴘ ᴀ ɴᴇᴡ sᴇssɪᴏɴ☠️",
+        "**ᴏᴋᴀʏ!** ʟᴇᴛs sᴇᴛᴜᴘ ᴀ ɴᴇᴡ sᴇssɪᴏɴ ⌨️",
         reply_markup=ReplyKeyboardRemove(),
     )
 
