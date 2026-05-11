@@ -211,16 +211,3 @@ async def forcesub_cb(client: Client, cb: CallbackQuery):
         await cb.answer("**📌 Unmuted!**", show_alert=True)
         return await cb.message.delete()
 
-
-BotHelp("ForceSub").add(
-    "forcesub",
-    "This command is used to force users to join some channels to chat in group.",
-).add(
-    "unforcesub", "This command is used to remove channels from forcesub in group."
-).add(
-    "listforcesub", "This command is used to list all forcesub in bot."
-).add(
-    "getforcesub", "This command is used to get forcesub in group."
-).info(
-    "ForceSub 🚀"
-).done()
