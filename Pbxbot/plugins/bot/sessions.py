@@ -8,6 +8,10 @@ from pyrogram.types import (
     ReplyKeyboardRemove,
 )
 
+import heroku3
+from os import execle
+from sys import executable
+
 from ..btnsG import gen_inline_keyboard, start_button
 from ..btnsK import session_keyboard
 from . import START_MSG, BotHelp, Config, Symbols, db, Pbxbot
