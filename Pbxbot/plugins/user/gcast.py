@@ -11,36 +11,43 @@ gcast = Gcast()
 
 @on_message("gcast", allow_stan=True)
 async def broadcast(client: Client, message: Message):
-    if len(message.command) < 2 or not message.reply_to_message:
-        return await Pbxbot.delete(
-            message,
-            f"Reply to a message with {handler}gcast <all / groups / users> <copy>",
+
+    if not message.reply_to_message:
+        return await message.reply_text(
+            f"Reply to a message with {handler}gcast <all/groups/users> <copy>"
         )
+
+    if len(message.command) < 2:
+        return await message.reply_text("Specify target!")
 
     mode = message.command[1].lower()
+
     if mode not in ["all", "groups", "users"]:
-        return await Pbxbot.delete(
-            message,
-            f"Reply to a message with {handler}gcast <all / groups / users> <copy>",
-        )
+        return await message.reply_text("Invalid target!")
 
     tag = True
+
     if len(message.command) > 2:
-        is_copy = message.command[2].lower()
-        tag = False if is_copy == "copy" else True
+        tag = message.command[2].lower() != "copy"
 
-    Pbx = await Pbxbot.edit(message, "Processing...")
-    msg = await gcast.start(
-        message.reply_to_message, client, message.command[1].strip(), tag
-    )
+    Pbx = await message.reply_text("Processing...")
 
-    if msg:
-        await Pbx.edit(
-            msg[1], parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
+    try:
+        msg = await gcast.start(
+            message.reply_to_message,
+            client,
+            mode,
+            tag
         )
-        await Pbxbot.check_and_log("gcast", msg[1], msg[0])
-    else:
-        await Pbx.edit("No user or group found!")
+
+        if msg:
+            await Pbx.edit(msg[1])
+        else:
+            await Pbx.edit("No chats found.")
+
+    except Exception as e:
+        await Pbx.edit(f"Error:\n`{e}`")
+        print(e)
 
 
 HelpMenu("gcast").add(
