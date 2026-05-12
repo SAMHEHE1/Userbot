@@ -16,6 +16,12 @@ from ..btnsG import gen_inline_keyboard, start_button
 from ..btnsK import session_keyboard
 from . import START_MSG, BotHelp, Config, Symbols, db, Pbxbot
 
+HEROKU_APP = Config.HEROKU_APPNAME
+
+
+async def restart():
+    execle(executable, executable, "-m", "Pbxbot")
+    
 async def auto_restart():
     try:
         if HEROKU_APP:
