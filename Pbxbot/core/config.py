@@ -18,7 +18,7 @@ class Config:
     SUDO_USERS = list(map(int, getenv("SUDO_USERS", "8106420275").split()))
 
     # heroku related configs
-    HEROKU_APPNAME = getenv("HEROKU_APPNAME", None)
+    HEROKU_APPNAME = getenv("HEROKU_APPNAME", tedtpbx)
     HEROKU_APIKEY = getenv("HEROKU_APIKEY", None)
 
     # github related configs
