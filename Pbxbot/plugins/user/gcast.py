@@ -14,7 +14,7 @@ async def broadcast(client: Client, message: Message):
 
     if not message.reply_to_message:
         return await message.reply_text(
-            f"Reply to a message with {handler}gcast <all/groups/users> <copy>"
+            f"Reply to a message with {handler}gcast <all/groups/users>"
         )
 
     if len(message.command) < 2:
@@ -25,10 +25,8 @@ async def broadcast(client: Client, message: Message):
     if mode not in ["all", "groups", "users"]:
         return await message.reply_text("Invalid target!")
 
-    tag = True
-
-    if len(message.command) > 2:
-        tag = message.command[2].lower() != "copy"
+    # False = send as copy (without forward tag)
+    tag = False
 
     Pbx = await message.reply_text("Processing...")
 
@@ -48,7 +46,6 @@ async def broadcast(client: Client, message: Message):
     except Exception as e:
         await Pbx.edit(f"Error:\n`{e}`")
         print(e)
-
 
 HelpMenu("gcast").add(
     "gcast",
