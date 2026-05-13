@@ -175,7 +175,7 @@ async def new_session(_, message: Message):
         await client.disconnect()
 
         await message.reply_text(
-            "**sᴜᴄᴄᴇss!** sᴇssɪᴏɴ sᴛʀɪɴɢ ᴀᴅᴅᴇᴅ ᴛᴏ ᴅᴀᴛᴀʙᴀsᴇ. ʙᴏᴛ ɪs ʀᴇsᴛᴀʀᴛɪɴɢ, ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ғᴏʀ ᴀ ғᴇᴡ sᴇᴄᴏɴᴅs... \n\nᴀɴʏ ᴘʀᴏʙʟᴇᴍ? ᴅᴍ ɴᴏᴡ ᴍʏ ᴅᴇᴠ . [ᴋ ᴀ ɪ s ᴇ ɴ](https://t.me/Quotll)."
+            "**sᴜᴄᴄᴇss!** sᴇssɪᴏɴ sᴛʀɪɴɢ ᴀᴅᴅᴇᴅ ᴛᴏ ᴅᴀᴛᴀʙᴀsᴇ. ʙᴏᴛ ɪs ʀᴇsᴛᴀʀᴛɪɴɢ, ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ғᴏʀ 𝟸 ᴍɪɴᴜᴛᴇs ғᴏʀ ᴛʜᴇ ʙᴏᴛ ʀᴇsᴛᴀʀᴛ ᴍsɢ ɪɴ ᴛʜᴇ [sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ](t.me/Ghouls_support). \n\nᴀɴʏ ᴘʀᴏʙʟᴇᴍ? ᴅᴍ ɴᴏᴡ ᴍʏ ᴅᴇᴠ . [ᴋ ᴀ ɪ s ᴇ ɴ](https://t.me/Quotll)."
         )
         await auto_restart()
     except TimeoutError:
